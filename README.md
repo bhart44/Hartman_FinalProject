@@ -5,13 +5,15 @@ Basic Wavetable Synthesizer
 
 ***
 
-In just a sentence or two, summarize your project. (E.g., "A website that lets you buy and sell stocks.")
+2. In just a sentence or two, summarize your project. (E.g., "A website that lets you buy and sell stocks.")
 
 I will incorperate PortAudio and PortMIDI to create a working wavetable synthesizer.
 
-In a paragraph or more, detail your project. What will your software do? What features will it have? How will it be executed?
+***
 
-My software will receive MIDI data from an input source and create notes based on three wavetables to output. The software will have three fixed wavetables to choose from upon loading the program; a sine wave, sawtooth wave, and square wave. 
+3. In a paragraph or more, detail your project. What will your software do? What features will it have? How will it be executed?
+
+  My software will receive MIDI data from an input source and create notes based on three wavetables to output. The software will have three fixed wavetables to choose from upon loading the program; a sine wave, sawtooth wave, and square wave. 
 
 In the world of software, most everything takes longer to implement than you expect. And so it's not uncommon to accomplish less in a fixed amount of time than you hope.
 
