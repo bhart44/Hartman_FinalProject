@@ -1,4 +1,4 @@
-# H1 Hartman Final Project
+# Hartman Final Project
 1. What will (likely) be the title of your project?
 
 Basic Wavetable Synthesizer
