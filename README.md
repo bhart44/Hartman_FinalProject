@@ -1,19 +1,19 @@
 # Hartman Final Project
 1. What will (likely) be the title of your project?
 
-Basic Wavetable Synthesizer
+...Basic Wavetable Synthesizer
 
 ***
 
 2. In just a sentence or two, summarize your project. (E.g., "A website that lets you buy and sell stocks.")
 
-I will incorperate PortAudio and PortMIDI to create a working wavetable synthesizer.
+...I will incorperate PortAudio and PortMIDI to create a working wavetable synthesizer.
 
 ***
 
 3. In a paragraph or more, detail your project. What will your software do? What features will it have? How will it be executed?
 
-  My software will receive MIDI data from an input source and create notes based on three wavetables to output. The software will have three fixed wavetables to choose from upon loading the program; a sine wave, sawtooth wave, and square wave. Once the user chooses the waveform for the program, it will be set for the remainder of the program running. These waveforms will be stored as typedefs in a struct in the code. In real time, the program will receive MIDI input data from one MIDI channel. Of that one channel, the program will extract only the MIDI pitch from the incoming notes. The program will then use a function to determine the proper frequency for the input MIDI note and multiply the waveform by that frequency. The program will then use PortAudio to produce the sound and output it through the selected device.
+...My software will receive MIDI data from an input source and create notes based on three wavetables to output. The software will have three fixed wavetables to choose from upon loading the program; a sine wave, sawtooth wave, and square wave. Once the user chooses the waveform for the program, it will be set for the remainder of the program running. These waveforms will be stored as typedefs in a struct in the code. In real time, the program will receive MIDI input data from one MIDI channel. Of that one channel, the program will extract only the MIDI pitch from the incoming notes. The program will then use a function to determine the proper frequency for the input MIDI note and multiply the waveform by that frequency. The program will then use PortAudio to produce the sound and output it through the selected device.
   
  ***
 
