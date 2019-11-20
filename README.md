@@ -1,7 +1,7 @@
 # Hartman Final Project
 1. What will (likely) be the title of your project?
 
-...Basic Wavetable Synthesizer
+   Basic Wavetable Synthesizer
 
 ***
 
