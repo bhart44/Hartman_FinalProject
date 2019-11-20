@@ -1,5 +1,5 @@
-# H1 Hartman_FinalProject
-What will (likely) be the title of your project?
+# H1 Hartman Final Project
+1. What will (likely) be the title of your project?
 
 Basic Wavetable Synthesizer
 
