@@ -21,17 +21,17 @@ void delay(int number_of_seconds){
   while(clock() < start_time + milli_seconds);//looping til require time is not met
 }
 
-//struct for chords
-typedef struct Notes {
-	int third;
-	int fifth;
-	int seventh;
-}Notes;
+// //struct for chords
+// typedef struct Notes {
+// 	int third;
+// 	int fifth;
+// 	int seventh;
+// }Notes;
 
-//create struct for different chord qualities
-typedef struct Chord {
-    Notes notes[3];
-}Chord; //Semi-colon at the end
+// //create struct for different chord qualities
+// typedef struct Chord {
+//     Notes notes[3];
+// }Chord; //Semi-colon at the end
 
 //-----------------------------MAIN FUNCTION HERE--------------------------------//
 int main(){
@@ -50,7 +50,16 @@ int main(){
   char chan = 1; //which MIDI channel we are using 
   int b;//Integer to hold MIDI note value
   int count = 0; //int for timer
-  int chord; //chord quality
+  int inputchord; //chord quality
+
+  //list of chords 
+  typedef enum quality {
+    major = 1, minor, dim, aug, maj7, min7, dominant, halfdim7, dim7
+  }quality;
+
+  printf("Specify the type of chord (1-8) you would like to play:  \n");
+  printf("Major Triad = 1\nMinor Triad = 2\nDiminished Triad = 3\nAugmented Triad = 4\nMajor Seventh = 5\nMinor Seventh = 6\nDominant = 7\nHalf Diminished Seventh = 8\nDiminished Seventh = 9\n");
+  scanf("%d", &inputchord);
 //-------------------------------------Initialize and Process Everything-------------------------//
   //Initialize Port MIDI
   error = Pm_Initialize();
@@ -111,19 +120,120 @@ int main(){
             //store MIDI note as variable b
             b = Pm_MessageData1(midiEvents[i].message);
 
-      }
-          // if(count < 1){
-            //Major triad on
+      
+            //if the chord has
+            if(count < 1){
+            switch(inputchord){
+//----------------------------------------------triads-------------------------------------
+            //major triad chord
+            case major:
+            //send note on messages to the third and fifth of the chord
             Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 4), 0x78));
             Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 7), 0x78)); 
-            //hold out notes
+            //hold out notes for one second
             delay(1000);
-            //Major triad off
+            //send note off messages to the same notes
             Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 4), 0x78));
             Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 7), 0x78));
-            //count number of times through loop
-            // count++;
-            // }ç
+            break;
+
+            //minor triad chord
+            case minor:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 7), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 7), 0x78));
+            break;
+
+            //diminished triad chord
+            case dim:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 6), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 6), 0x78));
+            break;
+
+            //augmented triad chord
+            case aug:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 8), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 8), 0x78));
+            break;
+
+//---------------------------------------seventh chords----------------------------------------
+
+            //major seventh chord
+            case maj7:
+            //send note on messages for the third, fifth, and seventh of the chord
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 7), 0x78)); 
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 11), 0x78)); 
+            //hold out notes one second
+            delay(1000);
+            //send note off messages to the same notes
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 7), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 11), 0x78));
+            break;
+
+            //minor seventh chord
+            case min7:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 7), 0x78)); 
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 10), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 7), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 10), 0x78));
+            break;
+            
+            //half diminished seventh chord
+            case halfdim7:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 6), 0x78)); 
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 10), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 3), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 6), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 10), 0x78));
+            break;
+            
+            //dominant seventh chord
+            case dominant:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 7), 0x78)); 
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 10), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 7), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 10), 0x78));
+            break;
+            
+            //diminished seventh chord
+            case dim7:
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 7), 0x78)); 
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEON, chan), (b + 10), 0x78)); 
+            delay(1000);
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 4), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 7), 0x78));
+            Pm_WriteShort(outputStream, 0, Pm_Message(SBYTE(MD_NOTEOFF, chan), (b + 10), 0x78));
+            break;
+            
+            //if number is out of range
+              default:
+            printf("input does not exist\n");
+            
+          return 0;
+            }
+
+            count++;
+          }
+        }
     }
 }
 
