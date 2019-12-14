@@ -21,18 +21,6 @@ void delay(int number_of_seconds){
   while(clock() < start_time + milli_seconds);//looping til require time is not met
 }
 
-// //struct for chords
-// typedef struct Notes {
-// 	int third;
-// 	int fifth;
-// 	int seventh;
-// }Notes;
-
-// //create struct for different chord qualities
-// typedef struct Chord {
-//     Notes notes[3];
-// }Chord; //Semi-colon at the end
-
 //-----------------------------MAIN FUNCTION HERE--------------------------------//
 int main(){
   PmError error; //Store error codes returned by PortMIDI functions
@@ -58,8 +46,9 @@ int main(){
   }quality;
 
   printf("Specify the type of chord (1-8) you would like to play:  \n");
-  printf("Major Triad = 1\nMinor Triad = 2\nDiminished Triad = 3\nAugmented Triad = 4\nMajor Seventh = 5\nMinor Seventh = 6\nDominant = 7\nHalf Diminished Seventh = 8\nDiminished Seventh = 9\n");
+  printf("1 = Major Triad\n2 = Minor Triad\n3 = Diminished Triad\n4 = Augmented Triad\n5 = Major Seventh\n6 = Minor Seventh\n7 = Dominant Chord\n8 = Half Diminished Seventh\n9 = Diminished Seventh\n");
   scanf("%d", &inputchord);
+
 //-------------------------------------Initialize and Process Everything-------------------------//
   //Initialize Port MIDI
   error = Pm_Initialize();
@@ -120,11 +109,12 @@ int main(){
             //store MIDI note as variable b
             b = Pm_MessageData1(midiEvents[i].message);
 
-      
             //if the chord has
             if(count < 1){
             switch(inputchord){
+
 //----------------------------------------------triads-------------------------------------
+           
             //major triad chord
             case major:
             //send note on messages to the third and fifth of the chord
