@@ -9,7 +9,7 @@ Written by Ben Hartman
 
 This program was written to allow a user to retreieve a single note input from a MIDI device and turn that note into a chord. The program includes every triad and seventh note chord quality possible, and allows the user to choose the quality of the chord using the command line interface. Once the user selects the desired type of chord, the program adds the corresponding intervals to the note played by the user on their MIDI device. The program then outputs the MIDI notes through the output device where they can then be recording using a digital audio workstation. 
 
-      This allows the user to produce chords of any quality in any key, which is especially useful for musicians who don't have piano playing skills, but would like to produce chord progressions in different keys. 
+***This allows the user to produce chords of any quality in any key, which is especially useful for musicians who don't have piano playing skills, but would like to produce chord progressions in different keys. 
 
 ## Algorithm
 
