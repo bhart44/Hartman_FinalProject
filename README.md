@@ -21,7 +21,7 @@ You must install PortMIDI from PortMedia in order to run this program
 
 Paste this Text in your command line to install PortMIDI:
 
-brew install portmidi
+***brew install portmidi***
 
 To compile use:
 gcc MIDI.c -o MIDI -lportmidi
