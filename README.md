@@ -17,7 +17,6 @@ The program runs on a loop of 60 seconds which first searches for MIDI input and
 
 You must have 
 
-Use:
- 
- gcc MIDI.c -o MIDI -lportmidi
+To compile use:
+gcc MIDI.c -o MIDI -lportmidi
 
