@@ -24,5 +24,6 @@ Paste this Text in your command line to install PortMIDI:
 ***brew install portmidi***
 
 To compile use:
-gcc MIDI.c -o MIDI -lportmidi
+
+__gcc MIDI.c -o MIDI -lportmidi__
 
