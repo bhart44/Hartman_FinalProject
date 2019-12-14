@@ -17,7 +17,11 @@ The program runs on a loop of 60 seconds which first searches for MIDI input and
 
 ## How to Compile and Run
 
-You must have 
+You must install PortMIDI from PortMedia in order to run this program 
+
+Paste this Text in your command line to install PortMIDI:
+
+brew install portmidi
 
 To compile use:
 gcc MIDI.c -o MIDI -lportmidi
