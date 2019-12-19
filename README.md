@@ -45,9 +45,20 @@ You now have an executable file called "midichords" in the same folder as "midic
 
   5. To run the program, type in:
 
-*./MIDI.c*
+*./midichords.c*
 
-### Using The Program
+### Syncing the MIDI Device and the Program
 
-Look at the output from the program and determine which MIDI device you would like to use from the list printed out. Whichever 
+Look at the output from the program. Each printed device has a number 1-n on the left side. Determine which MIDI device you would like to use from the list printed out. Make note of the input and output of the device you would like to use because they are listed seperately. Go back to the program and change the number of kMIDIInputDevice and kMIDIOutputDevice at the top of the mdidichords.c file to match the two numbers of the devices on the list. Now go back and run step number 4 above one more time.
 
+Now your MIDI device and midichords.c are in sync and using the same MIDI device. 
+
+### Implement the Program
+
+1. Run the code using step 5 above.
+
+2. Select the type of chord you would like to play on your device.
+
+3. Play one note 
+
+4. Return to the command line interface and type in "^C" to end the program.
