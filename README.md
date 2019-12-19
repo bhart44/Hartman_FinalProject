@@ -43,7 +43,7 @@ Homebrew will now take a few minutes to download the PortMIDI library and will l
 
 You now have an executable file called "midichords" in the same folder as "midichords.c" and are able to run the program.
 
-5. To run the program, type in:
+  5. To run the program, type in:
 
 **./MIDI.c**
 
