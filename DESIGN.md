@@ -20,7 +20,7 @@ I have 3 variables to store PortMIDI errors, number of current MIDI devices, cur
 ### User Input Chord Quality
 
 Next, I used an enumeration to number a list of chords given their names. Then I used typedef to name that struct "quality."
-This made it easier for me to keep track of which chords were being used in the switch statement holding chord data below. then I have a printf statement that lists the chord types and asks for the user to define which type of chord they would like to play 1-9. This is followed by a switch statement that records the number chosen and assigns it to the variable "inputhchord." Later on in the function, "inputchord" is recalled in a switch statement to calculate the correct MIDI output. 
+This made it easier for me to keep track of which chords were being used in the switch statement holding chord data below. then I have a printf statement that lists the chord types and asks for the user to define which type of chord they would like to play 1-9. This is followed by a switch statement that records the number chosen and assigns it to the variable "inputhchord." Later on in the function, "inputchord" is recalled in a switch statement to calculate the correct MIDI output. Then the device IDs are printed out for every MIDI device connected to the computer, which is necessary for the user to link their MIDI controller to the program.
 
 ### Opening PortTime and PortMIDI
 
@@ -30,3 +30,10 @@ Next there are a few clusters of code that begin the PortMedia Libraries which I
 
 The next step in the code is a "while" loop that starts the Pt_Time timer at 0 and runs until it hits 60 seconds. Nested inside that loop is the PortMIDI function Pm_Poll in an "if" loop. If there is any MIDI input stream at all, the code will continue from here. Then the actual MIDI data is captured from the MIDI device and each message is stored in the PortMIDI defined variable PmEvent defined at the top as midiEvents. Just below that, for every MIDI event that is recorded, the status and two data bytes are printed out from the midiEvents struct followed by the timestamp that they were receieved. This step just lets the user know that the MIDI notes are being recorded by the program by printing out the MIDI data. Next, my very original code kicks into swing. I stored the MIDI note value (data byte 1 in a note-on message) of the current note as integer "b." Integer b comes in handy in the switch statement that comes next. 
 
+### Switch Statement Inside Streaming Loop
+
+The next line of code is an "if" statement that will bypass the chord production if the chord has already been produced. It's not the best way to do it, but it works. I plan on improving this part of the code in the future. Then comes the giant switch statement. Using the integer from "inputchord," this switch statement matches the number to the chord that the user selected. Each "case" in this switch statement consists of every note of the selected chord, besides the root note, as an on-off pair. Each notes is set to variable "b" plus the interval, in half steps, between the root note and the harmony note. Every harmony note is automatically set to a velocity of 120 in the second byte. The switch function tells the user their input doesn't exist if it's not one of the 9 chords. Once the switch function finds the correct chord and outputs the MIDI, the variable "count" has 1 added to it. This means that a chord will not be produced again for as long as the function runs. Otherwise, the loop keeps running and producing new chords at the same increased interval every time until they reach MIDI note 127. 
+
+Next, I close up the PortMIDI streams using the Pm_Close function from the PortMIDI library and then close PortMIDI altogether. I also stop the timer that was started using PortTime. 
+
+This is the end of the program. 
