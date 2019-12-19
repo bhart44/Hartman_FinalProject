@@ -49,3 +49,5 @@ You now have an executable file called "midichords" in the same folder as "midic
 
 ### Using The Program
 
+Look at the output from the program and determine which MIDI device you would like to use from the list printed out. Whichever 
+
