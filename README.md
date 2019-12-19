@@ -18,11 +18,20 @@ The program runs on a loop of 60 seconds which first searches for MIDI input and
 
 ## How to Compile and Run
 
-You must install PortMIDI from PortMedia in order to run this program 
+### First Steps
+You must download the PortMIDI C library from PortMedia, unless already downloaded in order to run this program. Here are the steps to do so:
 
-Paste this Text in your command line to install PortMIDI:
+If you haven't already, visit the website ***https://brew.sh*** and install Homebrew for your computer. Homebrew will allow you to download and place the PortMIDI library on your computer and use it to run this MIDI program.
+
+Once Homebrew has been successfully installed, Paste this Text in your command line to install PortMIDI:
 
 **brew install portmidi**
+
+Homebrew will now take a few minutes to download the PortMIDI library and will let you know when it has finished. Once PortMIDI has been successfully installed, you will be able to continue with the following steps.
+
+### Compile and Run 
+
+Open up your IDE of choice and open the 
 
 To compile use:
 
