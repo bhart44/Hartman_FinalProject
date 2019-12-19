@@ -15,3 +15,9 @@ I only used one function outside of the main function in this program, although 
 ## Main Function
 
 The main function starts off by me declaring and/or defining all of the variables and pointers that I use throughout the code. 
+I have 3 variables to store PortMIDI errors, number of current MIDI devices, current MIDI device number, MIDI device info, number of MIDI events, and MIDI events themselves a the top. Then there are two pointers that are for the MIDI input and output streams, which are very important. I then declare PortTime errors as a variable as well as a bunch of number-holding variables of different forms for the PortTime timer, MIDI channel, MIDI note number, delay function timer, and user input chord. 
+
+### Switch Function: Chord Quality
+
+Next, I used an enumeration to number a list of chords given their names. Then I used typedef to name that struct "quality."
+This made it easier for me to keep track of which chords were being used in the switch statement holding chord data below. then I have a printf statement that lists the chord types and asks for the user to define which type of chord they would like to play 1-9. This is followed by a switch statement that records the number chosen and assigns it to the variable "inputhchord."
