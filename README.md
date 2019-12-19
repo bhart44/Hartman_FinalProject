@@ -45,7 +45,7 @@ You now have an executable file called "midichords" in the same folder as "midic
 
   5. To run the program, type in:
 
-**./MIDI.c**
+~~./MIDI.c~~
 
 ### Using The Program
 
