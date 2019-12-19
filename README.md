@@ -39,13 +39,13 @@ Homebrew will now take a few minutes to download the PortMIDI library and will l
 
 4. Compile the program by typing in to your command line interface:
 
-**gcc midichords.c -o midichords -lportmidi**
+*gcc midichords.c -o midichords -lportmidi*
 
 You now have an executable file called "midichords" in the same folder as "midichords.c" and are able to run the program.
 
   5. To run the program, type in:
 
-~~./MIDI.c~~
+*./MIDI.c*
 
 ### Using The Program
 
